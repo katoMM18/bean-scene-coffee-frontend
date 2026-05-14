@@ -1,0 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Clicker+Script&family=Platypi&display=swap');
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Platypi", serif;
+}
+
+h1 {
+  font-family: "Clicker Script", cursive;
+}

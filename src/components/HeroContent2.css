@@ -1,0 +1,104 @@
+.hero2-section {
+  padding: 4rem 1.5rem 2rem;
+  background: #fbf2e5;
+  color: #4b3721;
+}
+
+.hero2-header {
+  max-width: 860px;
+  margin: 0 auto 2.5rem;
+  text-align: center;
+}
+
+.hero2-header h2 {
+  font-size: clamp(2rem, 3vw, 3.4rem);
+  line-height: 1.05;
+  margin-bottom: 0.75rem;
+}
+
+.hero2-header p {
+  max-width: 680px;
+  margin: 0 auto;
+  color: #6e5940;
+  font-size: 1rem;
+  line-height: 1.8;
+}
+
+.hero2-grid {
+  display: grid;
+  gap: 1.75rem;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.hero2-card {
+  background: #fff7ed;
+  border: 1px solid rgba(140, 99, 45, 0.16);
+  border-radius: 1.2rem;
+  overflow: hidden;
+  box-shadow: 0 22px 55px rgba(92, 57, 19, 0.08);
+  display: flex;
+  flex-direction: column;
+}
+
+.hero2-card-image {
+  width: 100%;
+  height: 240px;
+  object-fit: cover;
+}
+
+.hero2-card-body {
+  padding: 1.6rem 1.4rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
+.hero2-card-title {
+  font-size: 1.25rem;
+  color: #6e3f12;
+  margin: 0;
+}
+
+.hero2-card-subtitle {
+  margin: 0;
+  color: #7c5f45;
+  font-size: 0.95rem;
+  letter-spacing: 0.02em;
+}
+
+.hero2-card-price {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #8b5b1f;
+}
+
+.hero2-card-button {
+  margin-top: auto;
+  border: none;
+  background: #f4b84b;
+  color: #422f12;
+  font-weight: 700;
+  font-size: 0.98rem;
+  padding: 0.95rem 1rem;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: transform 0.18s ease, background 0.18s ease;
+}
+
+.hero2-card-button:hover {
+  transform: translateY(-1px);
+  background: #e6a63a;
+}
+
+@media (max-width: 760px) {
+  .hero2-section {
+    padding: 3rem 1rem 1.5rem;
+  }
+
+  .hero2-card-image {
+    height: 220px;
+  }
+}

@@ -1,0 +1,145 @@
+.footer {
+  background-color: #4b2b1d;
+  position: relative;
+  overflow: hidden;
+  background-color: #4b2b1d;
+  color: white;
+  padding: 80px 40px;
+  margin-top: 100px;
+  min-height: 420px;
+}
+
+
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr 1fr;
+  gap: 40px;
+  align-items: flex-start;
+}
+
+.footer-section h2 {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  margin-top: 0;
+}
+.footer-section p {
+  font-size: 14px;
+  margin-bottom: 15px;
+  color: rgba(255, 255, 255, 0.85);
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+.footer-section p:hover {
+  color: #f5d547;
+}
+
+/* Left Section */
+.footer-left h1 {
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  letter-spacing: 2px;
+}
+
+.lorem2 {
+  font-size: 14px;
+  line-height: 1.6;
+  margin-bottom: 30px;
+  color: rgba(255, 255, 255, 0.9);
+  max-width: 280px;
+}
+
+.social-icons {
+  margin-top: 20px;
+}
+
+.social-icons img {
+  max-width: 150px;
+  height: auto;
+  display: flex;
+  gap: 10px;
+}
+
+/* Right Section - Contact */
+.footer-contact p,
+.footer-company p,
+.footer-about p {
+  font-size: 14px;
+  line-height: 1.8;
+  margin-bottom: 15px;
+  color: rgba(255, 255, 255, 0.85);
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.footer-contact p:hover,
+.footer-company p:hover,
+.footer-about p:hover {
+  color: #b1b1b1;
+}
+
+.footer-about p,
+.footer-company p {
+  margin-bottom: 12px;
+}
+
+.address {
+  margin-bottom: 20px;
+}
+
+.num {
+  margin-bottom: 12px;
+  font-size: 15px;
+}
+
+.email {
+  color: #87ceeb;
+  text-decoration: none;
+  margin-bottom: 12px;
+  cursor: pointer;
+}
+
+.email:hover {
+  text-decoration: underline;
+}
+
+.website {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.85);
+  margin-bottom: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .footer {
+    padding: 40px 20px;
+    margin-top: 50px;
+  }
+
+  .footer-content {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .footer-left h1 {
+    font-size: 28px;
+  }
+
+  .lorem2 {
+    max-width: 100%;
+  }
+
+  .footer-section h2 {
+    font-size: 18px;
+  }
+
+  .footer-section p,
+  .footer-contact p {
+    font-size: 13px;
+  }
+}
