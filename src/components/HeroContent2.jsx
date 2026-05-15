@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import React from 'react'
+import { useNavigate } from 'react-router-dom'
 import './HeroContent2.css'
 
 const coffeeItems = [
@@ -29,10 +30,10 @@ const coffeeItems = [
 ]
 
 function HeroContent2() {
-   const [ordered, setOrdered] =
-    useState(() => Array(coffeeItems.length).fill(false))
+  const navigate = useNavigate()
+
   return (
-    <section className="hero2-section">
+    <section id="coffee-menu" className="hero2-section">
       <div className="hero2-header">
         <h2>Enjoy a new blend of coffee style</h2>
         <p>
@@ -57,16 +58,9 @@ function HeroContent2() {
               <button
                 className="hero2-card-button"
                 type="button"
-                onClick={() => {
-                  setOrdered((prev) => {
-                    const next = [...prev];
-                    next[index] = true;
-                    return next;
-                  });
-                }}
-                disabled={ordered[index]}
+                onClick={() => navigate('/checkout')}
               >
-                {ordered[index] ? "Ordered!" : "Order Now"}
+                Order Now
               </button>
             </div>
           </article>

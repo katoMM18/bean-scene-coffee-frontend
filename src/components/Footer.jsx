@@ -3,10 +3,14 @@ import './Footer.css'
 import appIcons from '../images/app icons.png'
 
 function Footer() {
+  const scrollToMenu = () => {
+    const el = document.getElementById("coffee-menu");
+    if (el) el.scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
     <>
-      <footer className="footer"
-      >
+      <footer id="contact" className="footer">
         <div className="footer-content">
           <div className="footer-left">
             <h1>Bean Scene</h1>
@@ -23,7 +27,7 @@ function Footer() {
 
           <div className="footer-about footer-section">
             <h2>About Us</h2>
-            <p>Menu</p>
+            <p onClick={scrollToMenu}>Menu</p>
             <p>Features</p>
             <p>Help & Support</p>
           </div>
