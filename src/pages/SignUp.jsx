@@ -15,11 +15,14 @@ export default function SignUp() {
     e.preventDefault();
     setError("");
     try {
-      const res = await fetch("http://localhost:5000/api/auth/signup", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, email, password }),
-      });
+      const res = await fetch(
+        "https://bean-scene-coffee-backend.vercel.app/api/auth/signup",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ name, email, password }),
+        },
+      );
       const data = await res.json();
       if (!res.ok) return setError(data.message);
       login(data.user, data.token);
@@ -35,13 +38,35 @@ export default function SignUp() {
         <h1>Sign Up</h1>
         {error && <p className="auth-error">{error}</p>}
         <form onSubmit={handleSubmit}>
-          <input type="text" placeholder="Full Name" value={name} onChange={(e) => setName(e.target.value)} required />
-          <input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} required />
-          <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} required />
+          <input
+            type="text"
+            placeholder="Full Name"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            required
+          />
+          <input
+            type="email"
+            placeholder="Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
+          <input
+            type="password"
+            placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
           <button type="submit">Sign Up</button>
         </form>
-        <p className="auth-link">Already have an account? <Link to="/signin">Sign In</Link></p>
-        <Link to="/" className="auth-back">&larr; Back to Home</Link>
+        <p className="auth-link">
+          Already have an account? <Link to="/signin">Sign In</Link>
+        </p>
+        <Link to="/" className="auth-back">
+          &larr; Back to Home
+        </Link>
       </div>
     </div>
   );

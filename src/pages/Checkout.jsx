@@ -4,10 +4,10 @@ import { useAuth } from "../context/AuthContext";
 import "./Checkout.css";
 
 const coffeeMenu = [
-  { name: "Cappuccino", price: 8.50, image: "/src/images/cappuccino.png" },
-  { name: "Chai Latte", price: 8.50, image: "/src/images/chai latte.png" },
-  { name: "Macchiato", price: 8.50, image: "/src/images/macchiato.png" },
-  { name: "Expresso", price: 8.50, image: "/src/images/expresso.png" },
+  { name: "Cappuccino", price: 8.5, image: "/src/images/cappuccino.png" },
+  { name: "Chai Latte", price: 8.5, image: "/src/images/chai latte.png" },
+  { name: "Macchiato", price: 8.5, image: "/src/images/macchiato.png" },
+  { name: "Expresso", price: 8.5, image: "/src/images/expresso.png" },
 ];
 
 export default function Checkout() {
@@ -29,7 +29,7 @@ export default function Checkout() {
       const existing = prev.find((c) => c.name === item.name);
       if (existing) {
         return prev.map((c) =>
-          c.name === item.name ? { ...c, quantity: c.quantity + 1 } : c
+          c.name === item.name ? { ...c, quantity: c.quantity + 1 } : c,
         );
       }
       return [...prev, { ...item, quantity: 1 }];
@@ -40,9 +40,9 @@ export default function Checkout() {
     setCart((prev) =>
       prev
         .map((c) =>
-          c.name === name ? { ...c, quantity: c.quantity + delta } : c
+          c.name === name ? { ...c, quantity: c.quantity + delta } : c,
         )
-        .filter((c) => c.quantity > 0)
+        .filter((c) => c.quantity > 0),
     );
   };
 
@@ -65,14 +65,17 @@ export default function Checkout() {
     }
     setIsSubmitting(true);
     try {
-      const res = await fetch("http://localhost:5000/api/orders", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
+      const res = await fetch(
+        "https://bean-scene-coffee-backend.vercel.app/api/orders",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify({ items: cart, total }),
         },
-        body: JSON.stringify({ items: cart, total }),
-      });
+      );
       if (!res.ok) throw new Error("Order failed");
       setCart([]);
       sessionStorage.removeItem("cart");
@@ -87,12 +90,16 @@ export default function Checkout() {
   return (
     <div className="checkout-page">
       <div className="checkout-topbar">
-        <Link to="/" className="checkout-topbar-link">&larr; Back</Link>
+        <Link to="/" className="checkout-topbar-link">
+          &larr; Back
+        </Link>
         <h1>Checkout</h1>
         {user ? (
           <span className="checkout-user">{user.name}</span>
         ) : (
-          <Link to="/signin" className="checkout-topbar-link">Sign In</Link>
+          <Link to="/signin" className="checkout-topbar-link">
+            Sign In
+          </Link>
         )}
       </div>
 
@@ -109,7 +116,8 @@ export default function Checkout() {
       </div>
 
       <h2 className="checkout-section-title">
-        Your Cart {itemCount > 0 && <span className="checkout-count">({itemCount})</span>}
+        Your Cart{" "}
+        {itemCount > 0 && <span className="checkout-count">({itemCount})</span>}
       </h2>
       {cart.length === 0 ? (
         <div className="checkout-empty">
@@ -122,19 +130,40 @@ export default function Checkout() {
             <div key={item.name} className="checkout-cart-item">
               <div className="checkout-cart-info">
                 <strong>{item.name}</strong>
-                <span className="checkout-cart-price">${item.price.toFixed(2)} each</span>
+                <span className="checkout-cart-price">
+                  ${item.price.toFixed(2)} each
+                </span>
               </div>
               <div className="checkout-qty">
-                <button className="checkout-qty-btn" onClick={() => updateQuantity(item.name, -1)}>-</button>
+                <button
+                  className="checkout-qty-btn"
+                  onClick={() => updateQuantity(item.name, -1)}
+                >
+                  -
+                </button>
                 <span className="checkout-qty-value">{item.quantity}</span>
-                <button className="checkout-qty-btn" onClick={() => updateQuantity(item.name, 1)}>+</button>
+                <button
+                  className="checkout-qty-btn"
+                  onClick={() => updateQuantity(item.name, 1)}
+                >
+                  +
+                </button>
               </div>
-              <span className="checkout-item-total">${(item.price * item.quantity).toFixed(2)}</span>
-              <button className="checkout-remove" onClick={() => removeItem(item.name)}>Remove</button>
+              <span className="checkout-item-total">
+                ${(item.price * item.quantity).toFixed(2)}
+              </span>
+              <button
+                className="checkout-remove"
+                onClick={() => removeItem(item.name)}
+              >
+                Remove
+              </button>
             </div>
           ))}
           <div className="checkout-cart-footer">
-            <button className="checkout-clear-btn" onClick={clearCart}>Clear Cart</button>
+            <button className="checkout-clear-btn" onClick={clearCart}>
+              Clear Cart
+            </button>
             <div className="checkout-total">
               <span>Total</span>
               <strong>${total.toFixed(2)}</strong>
@@ -145,7 +174,11 @@ export default function Checkout() {
             onClick={placeOrder}
             disabled={isSubmitting || cart.length === 0}
           >
-            {isSubmitting ? "Placing Order..." : user ? "Place Order" : "Sign In to Order"}
+            {isSubmitting
+              ? "Placing Order..."
+              : user
+                ? "Place Order"
+                : "Sign In to Order"}
           </button>
         </div>
       )}
